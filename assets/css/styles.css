@@ -3741,3 +3741,157 @@ section {
     }
 
 }
+/* =========================================
+   HOME - OUR IMPACT PREVIEW
+========================================= */
+
+.home-impact-preview {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 70px auto 80px;
+
+    padding: 65px 50px;
+
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        135deg,
+        #edf6ed,
+        #f8f3e7
+    );
+
+    border-radius: 28px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(22, 77, 50, 0.10);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.home-impact-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(22, 77, 50, 0.06);
+
+    top: -100px;
+    left: -80px;
+}
+
+.home-impact-preview::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(196, 155, 60, 0.08);
+
+    bottom: -80px;
+    right: -60px;
+}
+
+.home-impact-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+
+    margin: 0 auto;
+}
+
+.home-impact-content h2 {
+    color: var(--dark-green);
+
+    font-size: 36px;
+
+    margin: 10px 0 15px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+.home-impact-content > p:not(.eyebrow) {
+    color: #666;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    max-width: 680px;
+
+    margin: 0 auto 28px;
+}
+
+
+/* BUTTON */
+
+.impact-more-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 30px;
+
+    background: var(--dark-green);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.impact-more-btn:hover {
+    background: var(--gold);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(22, 77, 50, 0.18);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .home-impact-preview {
+        margin: 50px 15px 60px;
+
+        padding: 45px 22px;
+
+        border-radius: 22px;
+    }
+
+    .home-impact-content h2 {
+        font-size: 28px;
+    }
+
+    .home-impact-content > p:not(.eyebrow) {
+        font-size: 14px;
+    }
+
+}
