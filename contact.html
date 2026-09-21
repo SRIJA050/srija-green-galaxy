@@ -282,9 +282,11 @@
                     </div>
 
 
-                    <button type="submit" class="btn-primary">
-                        Send Message
-                    </button>
+                    <div class="contact-submit">
+    <button type="submit" class="send-message-btn">
+        Send Message
+    </button>
+</div>
 
                 </form>
 
@@ -359,7 +361,43 @@
 
     </footer>
 
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("success") === "true") {
+
+        const message = document.createElement("div");
+
+        message.className = "thank-you-message";
+
+        message.innerHTML = `
+            <div class="thank-you-icon">✓</div>
+
+            <h3>Thank You for Contacting Us!</h3>
+
+            <p>
+                Your message has been received successfully.
+                We appreciate your interest in
+                <strong>Srija Green Galaxy</strong>.
+            </p>
+
+            <p>
+                Our team will get back to you soon.
+            </p>
+        `;
+
+        const form = document.querySelector("form");
+
+        if (form) {
+            form.style.display = "none";
+            form.parentNode.insertBefore(message, form);
+        }
+    }
+
+});
+</script>
     <script src="assets/js/script.js"></script>
 
 </body>
