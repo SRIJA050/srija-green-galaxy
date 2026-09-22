@@ -4052,3 +4052,83 @@ section {
     }
 
 }
+/* =========================================
+   FINAL FIX - JOURNEY TWO IMAGES
+========================================= */
+
+.journey-content .journey-image {
+    width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns: 1fr 1fr !important;
+
+    gap: 20px !important;
+
+    height: auto !important;
+
+    overflow: visible !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    border-radius: 0 !important;
+}
+
+
+/* Each image gets its own separate card */
+
+.journey-content .journey-image .journey-image-card {
+    width: 100% !important;
+
+    height: 330px !important;
+
+    background: #ffffff !important;
+
+    border-radius: 18px !important;
+
+    overflow: hidden !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    box-shadow: 0 8px 25px rgba(22, 77, 50, 0.12) !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* Complete original image - NO CROPPING */
+
+.journey-content .journey-image .journey-image-card img {
+    width: 100% !important;
+
+    height: 100% !important;
+
+    object-fit: contain !important;
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    max-height: 100% !important;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .journey-content .journey-image {
+        grid-template-columns: 1fr !important;
+    }
+
+    .journey-content .journey-image .journey-image-card {
+        height: 300px !important;
+    }
+
+}
