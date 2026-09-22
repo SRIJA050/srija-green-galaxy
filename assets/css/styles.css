@@ -3895,3 +3895,160 @@ section {
     }
 
 }
+/* =========================================
+   HOME JOURNEY - THREE ORIGINAL IMAGES
+========================================= */
+
+.journey-content .journey-image {
+    width: 100%;
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    height: auto;
+
+    overflow: visible;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    border-radius: 0;
+}
+
+
+/* Individual image card */
+
+.journey-image-card {
+    width: 100%;
+    height: 300px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 25px rgba(22, 77, 50, 0.12);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.journey-image-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(22, 77, 50, 0.18);
+}
+
+
+/* Original image - NO CROPPING */
+
+.journey-image-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.journey-image-card:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .journey-content .journey-image {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .journey-content .journey-image {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-image-card {
+        height: 280px;
+    }
+
+}
+/* =========================================
+   JOURNEY - TWO IMAGES
+========================================= */
+
+.journey-content .journey-image {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    height: auto;
+    overflow: visible;
+
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.journey-image-card {
+    width: 100%;
+    height: 360px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 25px rgba(22, 77, 50, 0.12);
+}
+
+.journey-image-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .journey-content .journey-image {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-image-card {
+        height: 300px;
+    }
+
+}
