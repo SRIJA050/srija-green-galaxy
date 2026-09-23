@@ -4132,3 +4132,663 @@ section {
     }
 
 }
+.buy-now-nav {
+    background: var(--gold) !important;
+    color: #fff !important;
+    padding: 10px 18px !important;
+    border-radius: 10px;
+    font-weight: 800 !important;
+}
+
+.buy-now-nav:hover {
+    background: var(--dark-green) !important;
+    transform: translateY(-2px);
+}
+/* =========================================================
+   BUY NOW PAGE
+========================================================= */
+
+.buy-hero {
+    min-height: 320px;
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.buy-products-section {
+    width: 100%;
+    max-width: 1250px;
+    margin: 70px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.buy-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+.buy-product-card {
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 35px rgba(22, 77, 50, 0.12);
+    border: 1px solid rgba(22, 77, 50, 0.08);
+}
+
+.buy-product-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.buy-product-header h2 {
+    color: var(--dark-green);
+    font-size: 34px;
+    margin: 8px 0 12px;
+}
+
+.buy-product-header > p:last-child {
+    color: #666;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: auto;
+}
+
+
+/* =========================
+   IMAGE SLIDER
+========================= */
+
+.product-slider {
+    width: 100%;
+    height: 330px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #f7f7f7;
+}
+
+.slider-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.slider-image.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slider-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.product-price-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.product-price-box > div {
+    padding: 18px;
+    text-align: center;
+    background: #f2f7f1;
+    border-radius: 15px;
+}
+
+.product-price-box h3 {
+    margin: 0 0 8px;
+    color: var(--dark-green);
+    font-size: 16px;
+}
+
+.product-price-box strong {
+    display: block;
+    color: var(--gold);
+    font-size: 26px;
+}
+
+.product-price-box span {
+    color: #777;
+    font-size: 13px;
+}
+
+.product-note {
+    text-align: center;
+    margin: 18px 0 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   ORDER SECTION
+========================= */
+
+.order-section {
+    width: 100%;
+    padding: 70px 20px 90px;
+    background: #f7f9f5;
+    box-sizing: border-box;
+}
+
+.order-container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.order-container .section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.order-container .section-heading h2 {
+    color: var(--dark-green);
+    font-size: 36px;
+    margin: 8px 0 12px;
+}
+
+.order-container .section-heading p:last-child {
+    color: #666;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+#orderForm {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(22, 77, 50, 0.10);
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+.quantity-box label {
+    color: var(--dark-green);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.quantity-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid #d9dfd8;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.quantity-box input:focus {
+    border-color: var(--dark-green);
+    box-shadow: 0 0 0 3px rgba(22, 77, 50, .08);
+}
+
+
+/* =========================
+   PRODUCT SELECTION
+========================= */
+
+.order-product-box {
+    margin-top: 30px;
+}
+
+.order-product-box h3 {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.product-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.selection-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid #dce3db;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.selection-card:hover {
+    border-color: var(--dark-green);
+    background: #f5f9f3;
+}
+
+.selection-card input {
+    accent-color: var(--dark-green);
+}
+
+.selection-card span {
+    color: #444;
+    font-size: 14px;
+}
+
+.selection-card strong {
+    display: block;
+    color: var(--gold);
+    margin-top: 4px;
+}
+
+
+/* =========================
+   QUANTITY
+========================= */
+
+.quantity-box {
+    max-width: 250px;
+    margin-top: 25px;
+}
+
+.quantity-box input {
+    font-size: 16px;
+}
+
+
+/* =========================
+   RULES
+========================= */
+
+.order-rules {
+    margin-top: 30px;
+    padding: 22px;
+    background: #f2f7f1;
+    border-left: 5px solid var(--gold);
+    border-radius: 12px;
+}
+
+.order-rules h3 {
+    color: var(--dark-green);
+    margin: 0 0 12px;
+}
+
+.order-rules ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.order-rules li {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+.order-total {
+    margin-top: 30px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dark-green);
+    color: #fff;
+    border-radius: 15px;
+}
+
+.order-total span {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.order-total strong {
+    font-size: 27px;
+    color: #fff;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.order-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.order-submit button {
+    border: none;
+    cursor: pointer;
+    padding: 14px 45px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    transition: .3s ease;
+}
+
+.order-submit button:hover {
+    background: var(--dark-green);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(22, 77, 50, .18);
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.order-message {
+    display: none;
+    padding: 18px 22px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.order-message.success {
+    display: block;
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+}
+
+.order-message.error {
+    display: block;
+    background: #ffebee;
+    color: #b71c1c;
+    border: 1px solid #ef9a9a;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .buy-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .buy-products-section {
+        padding: 0 15px;
+        margin: 45px auto;
+    }
+
+    .buy-product-card {
+        padding: 20px;
+    }
+
+    .product-slider {
+        height: 280px;
+    }
+
+    .product-price-box {
+        grid-template-columns: 1fr;
+    }
+
+    .order-section {
+        padding: 50px 15px 70px;
+    }
+
+    #orderForm {
+        padding: 22px;
+    }
+
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .order-total {
+        padding: 18px;
+    }
+
+    .order-total strong {
+        font-size: 22px;
+    }
+
+}
+/* Buy Now - normal on all other pages */
+.main-nav .buy-now-nav {
+    background: transparent !important;
+    color: var(--dark-green) !important;
+    box-shadow: none !important;
+}
+
+/* Buy Now - green only on Buy Now page */
+.main-nav .buy-now-nav.active {
+    background: var(--dark-green) !important;
+    color: #ffffff !important;
+}
+
+/* Hover on other pages */
+.main-nav .buy-now-nav:hover {
+    background: transparent !important;
+    color: var(--dark-green) !important;
+    box-shadow: none !important;
+}
+/* Order Now button */
+.order-submit button {
+    border: none;
+    cursor: pointer;
+    padding: 14px 45px;
+    background: var(--dark-green) !important;
+    color: #ffffff !important;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    transition: all 0.3s ease;
+}
+
+/* When clicked / pressed */
+.order-submit button:active {
+    background: var(--gold) !important;
+    color: #ffffff !important;
+    transform: translateY(1px);
+}
+
+/* When mouse is over it */
+.order-submit button:hover {
+    background: var(--gold) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(22, 77, 50, 0.18);
+}
+/* =========================
+   ORDER SUCCESS POPUP
+========================= */
+
+.order-success-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.order-success-popup {
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    animation: orderPopupAppear 0.5s ease;
+}
+
+.order-success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--dark-green);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.order-success-popup h2 {
+    color: var(--dark-green);
+    margin: 0 0 15px;
+    font-size: 28px;
+}
+
+.order-success-popup p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 8px auto;
+    max-width: 430px;
+}
+
+.order-success-popup strong {
+    color: var(--dark-green);
+}
+
+.order-success-contact {
+    margin-top: 20px !important;
+    padding: 15px;
+    background: #f2f7f1;
+    border-radius: 12px;
+}
+
+.order-success-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.order-success-buttons a,
+.order-success-buttons button {
+    padding: 11px 22px;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.order-home-btn {
+    background: var(--dark-green);
+    color: #ffffff;
+}
+
+.order-contact-btn {
+    background: var(--gold);
+    color: #ffffff;
+}
+
+.order-success-buttons a:hover,
+.order-success-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes orderPopupAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .order-success-popup {
+        padding: 30px 20px;
+    }
+
+    .order-success-popup h2 {
+        font-size: 24px;
+    }
+
+    .order-success-buttons {
+        flex-direction: column;
+    }
+
+    .order-success-buttons a,
+    .order-success-buttons button {
+        width: 100%;
+    }
+}
