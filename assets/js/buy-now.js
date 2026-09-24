@@ -1,28 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
-       PRODUCT SLIDERS
-    ========================== */
+    // ==============================
+    // PRODUCT SLIDER
+    // ==============================
 
-    function startSlider(selector) {
-
-        const slider = document.querySelector(selector);
-
-        if (!slider) return;
+    document.querySelectorAll(".product-slider").forEach(function (slider) {
 
         const images = slider.querySelectorAll(".slider-image");
 
+        if (images.length === 0) return;
+
         let current = 0;
 
-        images.forEach(function (image, index) {
-
-            image.classList.remove("active");
-
-            if (index === 0) {
-                image.classList.add("active");
-            }
-
-        });
+        images[0].classList.add("active");
 
         setInterval(function () {
 
@@ -37,111 +27,90 @@ document.addEventListener("DOMContentLoaded", function () {
             images[current].classList.add("active");
 
         }, 2000);
-    }
 
-    startSlider(".biopot-slider");
-    startSlider(".ganesha-slider");
+    });
 
 
-    /* =========================
-       ORDER CALCULATION
-    ========================== */
+    // ==============================
+    // FORM ELEMENTS
+    // ==============================
 
     const form = document.getElementById("orderForm");
-    const quantity = document.getElementById("quantity");
-    const displayTotal = document.getElementById("displayTotal");
-    const totalAmount = document.getElementById("totalAmount");
-    const orderType = document.getElementById("orderType");
+
+    const quantityInput =
+        document.getElementById("quantity");
+
+    const totalAmount =
+        document.getElementById("totalAmount");
 
     const productOptions =
-        document.querySelectorAll('input[name="product"]');
+        document.querySelectorAll(
+            'input[name="product"]'
+        );
 
 
-    function getSelectedProduct() {
-
-        const selected =
-            document.querySelector('input[name="product"]:checked');
-
-        return selected ? selected.value : "";
-
+    if (!form) {
+        console.error("orderForm not found");
+        return;
     }
 
+    if (!quantityInput) {
+        console.error("quantity input not found");
+        return;
+    }
+
+    if (!totalAmount) {
+        console.error("totalAmount element not found");
+        return;
+    }
+
+
+    // ==============================
+    // PRICE CALCULATION
+    // ==============================
 
     function calculateTotal() {
 
-        const product = getSelectedProduct();
+        const selected =
+            document.querySelector(
+                'input[name="product"]:checked'
+            );
 
-        let qty = parseInt(quantity.value);
-
-        if (isNaN(qty) || qty < 1) {
-            qty = 1;
-            quantity.value = 1;
-        }
+        const quantity =
+            parseInt(quantityInput.value) || 0;
 
         let price = 0;
-        let productName = "";
 
+        if (selected) {
 
-        if (product === "biopot-plant") {
+            if (selected.value === "biopot-plant") {
+                price = 100;
+            }
 
-            price = 100;
-            productName = "Biopot with Plant";
+            else if (selected.value === "biopot-empty") {
+                price = 20;
+            }
 
+            else if (selected.value === "ganesh-normal") {
+                price = 100;
+            }
+
+            else if (selected.value === "ganesh-gift") {
+                price = 500;
+            }
         }
 
-        else if (product === "biopot-empty") {
+        const total = price * quantity;
 
-            price = 20;
-            productName = "Empty Biopot";
-
-        }
-
-        else if (product === "ganesh-normal") {
-
-            price = 100;
-            productName = "Normal Ganesh Idol";
-
-        }
-        if (
-    product === "ganesh-normal" &&
-    customerDistance > 50 &&
-    qty < 5
-) {
-
-    showOrderMessage(
-        "For deliveries more than 50 km from Gadwal, Normal Ganesh orders require a minimum quantity of 5.",
-        "error"
-    );
-
-    return;
-
-}
-
-        else if (product === "ganesh-gift") {
-
-            price = 500;
-            productName = "Gift / Decoration Ganesh Idol";
-
-        }
-
-
-        const total = price * qty;
-
-        displayTotal.textContent =
+        totalAmount.textContent =
             "₹" + total.toLocaleString("en-IN");
-
-        totalAmount.value =
-            "₹" + total.toLocaleString("en-IN");
-
-        orderType.value =
-            productName + " × " + qty;
-
     }
 
 
-    productOptions.forEach(function (option) {
+    // Product change
+    productOptions.forEach(function (radio) {
 
-        option.addEventListener(
+        radio.addEventListener(
             "change",
             calculateTotal
         );
@@ -149,42 +118,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    quantity.addEventListener(
+    // Quantity change
+    quantityInput.addEventListener(
         "input",
         calculateTotal
     );
 
 
+    // Initial calculation
     calculateTotal();
 
 
-    /* =========================
-       MESSAGE
-    ========================== */
+    // ==============================
+    // MESSAGE
+    // ==============================
 
-    function showOrderMessage(message, type) {
+    function showMessage(message, type) {
 
         const box =
             document.getElementById("orderMessage");
 
-        if (!box) return;
+        if (!box) {
+            alert(message);
+            return;
+        }
 
         box.textContent = message;
 
         box.className =
             "order-message " + type;
 
-        box.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
+        box.style.display = "block";
     }
 
 
-    /* =========================
-       SUCCESS POPUP
-    ========================== */
+    // ==============================
+    // SUCCESS POPUP
+    // ==============================
 
     function showSuccessPopup() {
 
@@ -203,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <h2>
-                    Order Received Successfully
+                    Order Submitted Successfully!
                 </h2>
 
                 <p>
@@ -212,28 +182,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 </p>
 
                 <p>
-                    Your order details have been
-                    received successfully.
-                    Our team will contact you shortly
-                    to confirm your order and delivery.
+                    Your order has been received successfully.
+                    Our team will contact you soon.
                 </p>
 
                 <p class="order-success-contact">
-
-                    For any questions or assistance,
-                    please contact our team.
-
+                    For assistance:
+                    <br>
+                    <strong>+91-9440981551</strong>
+                    <br>
+                    <strong>+91-7013906160</strong>
                 </p>
 
                 <div class="order-success-buttons">
 
-                    <a href="index.html"
-                       class="order-home-btn">
-                        Back to Home
+                    <a
+                        href="index.html"
+                        class="order-home-btn"
+                    >
+                        Go to Home
                     </a>
 
-                    <a href="contact.html"
-                       class="order-contact-btn">
+                    <a
+                        href="contact.html"
+                        class="order-contact-btn"
+                    >
                         Contact Us
                     </a>
 
@@ -244,312 +217,250 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         document.body.appendChild(overlay);
-
     }
 
 
-    /* =========================
-       FORM SUBMISSION
-    ========================== */
+    // ==============================
+    // SUBMIT ORDER
+    // ==============================
 
-    form.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
+    form.addEventListener(
+        "submit",
+        async function (event) {
 
+            event.preventDefault();
 
-        const product =
-            getSelectedProduct();
+            const selected =
+                document.querySelector(
+                    'input[name="product"]:checked'
+                );
 
-        const qty =
-            parseInt(quantity.value);
+            const quantity =
+                parseInt(quantityInput.value) || 0;
 
-        const address =
-            document.getElementById("address")
-                .value.trim();
-        let customerDistance = null;
-        if (product === "ganesh-normal") {
+            const address =
+                document.getElementById("address").value.trim();
 
-    try {
 
-        const location =
-            await getLocationFromAddress(address);
+            // ==============================
+            // BASIC VALIDATION
+            // ==============================
 
-        customerDistance =
-            calculateDistance(
-                GADWAL_LAT,
-                GADWAL_LON,
-                location.lat,
-                location.lon
-            );
+            if (!selected) {
 
-    } catch (error) {
+                showMessage(
+                    "Please select a product.",
+                    "error"
+                );
 
-        showOrderMessage(
-            "We could not verify the delivery location. Please enter a complete address with city and PIN code.",
-            "error"
-        );
+                return;
+            }
 
-        return;
 
-    }
+            if (quantity <= 0) {
 
-}
-        const GADWAL_LAT = 16.2350;
-        const GADWAL_LON = 77.7956;
-        function calculateDistance(lat1, lon1, lat2, lon2) {
+                showMessage(
+                    "Please enter a valid quantity.",
+                    "error"
+                );
 
-    const R = 6371;
+                return;
+            }
 
-    const dLat =
-        (lat2 - lat1) * Math.PI / 180;
 
-    const dLon =
-        (lon2 - lon1) * Math.PI / 180;
+            if (address === "") {
 
-    const a =
-        Math.sin(dLat / 2) *
-        Math.sin(dLat / 2) +
-        Math.cos(lat1 * Math.PI / 180) *
-        Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+                showMessage(
+                    "Please enter your complete delivery address.",
+                    "error"
+                );
 
-    const c =
-        2 * Math.atan2(
-            Math.sqrt(a),
-            Math.sqrt(1 - a)
-        );
+                return;
+            }
 
-    return R * c;
-}
-async function getLocationFromAddress(address) {
 
-    const url =
-        "https://nominatim.openstreetmap.org/search" +
-        "?format=json" +
-        "&addressdetails=1" +
-        "&limit=1" +
-        "&countrycodes=in" +
-        "&q=" +
-        encodeURIComponent(address);
+            // ==============================
+            // BIOPOT WITH PLANT
+            // Minimum 10
+            // ==============================
 
-    const response = await fetch(url, {
-        headers: {
-            "Accept": "application/json"
-        }
-    });
+            if (
+                selected.value === "biopot-plant" &&
+                quantity < 10
+            ) {
 
-    if (!response.ok) {
-        throw new Error("Location service unavailable");
-    }
+                showMessage(
+                    "Biopot with Plant orders require a minimum quantity of 10.",
+                    "error"
+                );
 
-    const data = await response.json();
+                return;
+            }
 
-    if (!data || data.length === 0) {
-        throw new Error("Address location not found");
-    }
 
-    return {
-        lat: parseFloat(data[0].lat),
-        lon: parseFloat(data[0].lon)
-    };
-}
+            // ==============================
+            // EMPTY BIOPOT
+            // Minimum 101
+            // ==============================
 
-    const response = await fetch(url);
+            if (
+                selected.value === "biopot-empty" &&
+                quantity <= 100
+            ) {
 
-    if (!response.ok) {
-        throw new Error("Location service unavailable");
-    }
+                showMessage(
+                    "Empty Biopot orders require a minimum quantity of 101.",
+                    "error"
+                );
 
-    const data = await response.json();
+                return;
+            }
 
-    if (!data || data.length === 0) {
-        throw new Error("Address location not found");
-    }
 
-    return {
-        lat: parseFloat(data[0].lat),
-        lon: parseFloat(data[0].lon)
-    };
-}
+            // ==============================
+            // NORMAL GANESH
+            // ==============================
 
-        /* PRODUCT CHECK */
+            if (
+                selected.value === "ganesh-normal"
+            ) {
 
-        if (!product) {
+                /*
+                 * IMPORTANT:
+                 *
+                 * We are NOT using automatic
+                 * address geolocation anymore.
+                 *
+                 * The customer must select
+                 * whether the delivery is within
+                 * 50 km of Gadwal.
+                 */
 
-            showOrderMessage(
-                "Please select a product before placing your order.",
-                "error"
-            );
+                const deliveryArea =
+                    document.querySelector(
+                        'input[name="delivery-area"]:checked'
+                    );
 
-            return;
 
-        }
+                if (!deliveryArea) {
 
+                    showMessage(
+                        "Please select your delivery location range.",
+                        "error"
+                    );
 
-        /* EMPTY BIOPOT RULE */
+                    return;
+                }
 
-        if (
-            product === "biopot-empty" &&
-            qty <= 100
-        ) {
 
-            showOrderMessage(
-                "Empty Biopots can be ordered only for quantities above 100.",
-                "error"
-            );
+                if (
+                    deliveryArea.value === "outside-50" &&
+                    quantity < 5
+                ) {
 
-            return;
+                    showMessage(
+                        "Normal Ganesh orders outside 50 km from Gadwal require a minimum quantity of 5.",
+                        "error"
+                    );
 
-        }
+                    return;
+                }
+            }
 
-        /* BIOPOT WITH PLANT */
 
-if (
-    product === "biopot-plant" &&
-    qty < 10
-) {
-
-    showOrderMessage(
-        "Biopots with plants require a minimum order of 10.",
-        "error"
-    );
-
-    return;
-}
-
-
-
-        /* ADDRESS CHECK */
-
-        if (address.length < 10) {
-
-            showOrderMessage(
-                "Please enter your complete delivery address.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /* UPDATE TOTAL */
-
-        calculateTotal();
-
-
-        /* SAVE ORDER */
-
-        localStorage.setItem(
-            "srijaOrderProduct",
-            product
-        );
-
-        localStorage.setItem(
-            "srijaOrderQuantity",
-            qty
-        );
-
-        localStorage.setItem(
-            "srijaOrderAddress",
-            address
-        );
-
-
-        /* =========================
-           SEND TO WEB3FORMS
-        ========================== */
-
-        const submitButton =
-            document.getElementById("orderButton");
-
-        const originalText =
-            submitButton.textContent;
-
-
-        submitButton.disabled = true;
-
-        submitButton.textContent =
-            "Processing Order...";
-
-
-        try {
+            // ==============================
+            // SUBMIT TO WEB3FORMS
+            // ==============================
 
             const formData =
                 new FormData(form);
 
 
-            const response =
-                await fetch(
-                    "https://api.web3forms.com/submit",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
+            // Prevent redirect
+            formData.delete("redirect");
+
+
+            const submitButton =
+                form.querySelector(
+                    'button[type="submit"]'
                 );
 
 
-            const result =
-                await response.json();
+            if (submitButton) {
 
-
-            if (result.success) {
-
-                /* Hide form */
-
-                form.style.display = "none";
-
-
-                /* Show professional popup */
-
-                showSuccessPopup();
-
-
-            } else {
-
-                showOrderMessage(
-                    "We could not submit your order. Please try again.",
-                    "error"
-                );
-
-                submitButton.disabled = false;
+                submitButton.disabled = true;
 
                 submitButton.textContent =
-                    originalText;
+                    "Submitting...";
 
             }
 
 
-        } catch (error) {
+            try {
 
-            showOrderMessage(
-                "Something went wrong while submitting your order. Please try again.",
-                "error"
-            );
+                const response =
+                    await fetch(
+                        "https://api.web3forms.com/submit",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
 
-            submitButton.disabled = false;
 
-            submitButton.textContent =
-                originalText;
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "Web3Forms:",
+                    result
+                );
+
+
+                if (result.success) {
+
+                    form.style.display =
+                        "none";
+
+                    showSuccessPopup();
+
+                }
+
+                else {
+
+                    showMessage(
+                        "Unable to submit the order. Please try again.",
+                        "error"
+                    );
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                showMessage(
+                    "Something went wrong while submitting the order. Please try again.",
+                    "error"
+                );
+
+            }
+
+
+            if (submitButton) {
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "Order Now";
+
+            }
 
         }
-
-    });
-
-
-    /* =========================
-       CURRENT YEAR
-    ========================== */
-
-    const yearElements =
-        document.querySelectorAll(".current-year");
-
-    yearElements.forEach(function (element) {
-
-        element.textContent =
-            new Date().getFullYear();
-
-    });
+    );
 
 });

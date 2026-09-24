@@ -430,11 +430,36 @@
                        id="quantity"
                        name="quantity"
                        min="1"
-                       value="1"
                        required>
 
             </div>
+            <div class="delivery-area-box" id="deliveryAreaBox">
 
+    <h3>Delivery Location</h3>
+
+    <label class="delivery-option">
+        <input
+            type="radio"
+            name="delivery-area"
+            value="within-50"
+        >
+        <span>Within 50 km of Gadwal</span>
+    </label>
+
+    <label class="delivery-option">
+        <input
+            type="radio"
+            name="delivery-area"
+            value="outside-50"
+        >
+        <span>More than 50 km from Gadwal</span>
+    </label>
+
+    <p class="delivery-note">
+        This selection is required only for Normal Ganesh orders.
+    </p>
+
+</div>
 
             <!-- HIDDEN ORDER DETAILS -->
 
