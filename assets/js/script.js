@@ -8,6 +8,115 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add animation when sections enter the screen
     // -----------------------------------------------------
 
+    // =========================================
+// CART SIDEBAR
+// =========================================
+
+const cartBtn = document.getElementById("cartBtn");
+const sideCart = document.getElementById("sideCart");
+const closeCart = document.getElementById("closeCart");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+function openCart() {
+    sideCart.classList.add("open");
+    sidebarOverlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+function closeCartSidebar() {
+    sideCart.classList.remove("open");
+    sidebarOverlay.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+if (cartBtn) {
+    cartBtn.addEventListener("click", openCart);
+}
+
+if (closeCart) {
+    closeCart.addEventListener("click", closeCartSidebar);
+}
+
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", closeCartSidebar);
+}
+
+// =========================================
+// WISHLIST SIDEBAR
+// =========================================
+
+const wishlistBtn = document.getElementById("wishlistBtn");
+const sideWishlist = document.getElementById("sideWishlist");
+const closeWishlist = document.getElementById("closeWishlist");
+const wishlistOverlay = document.getElementById("sidebarOverlay");
+
+function openWishlist() {
+    sideWishlist.classList.add("open");
+    wishlistOverlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+function closeWishlistSidebar() {
+    sideWishlist.classList.remove("open");
+    wishlistOverlay.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+if (wishlistBtn) {
+    wishlistBtn.addEventListener("click", openWishlist);
+}
+
+if (closeWishlist) {
+    closeWishlist.addEventListener("click", closeWishlistSidebar);
+}
+
+if (wishlistOverlay) {
+    wishlistOverlay.addEventListener("click", closeWishlistSidebar);
+}
+    // =========================================
+// HERO NUMBER COUNTING ANIMATION
+// =========================================
+
+const counters = document.querySelectorAll(".count-number");
+
+counters.forEach(function (counter) {
+
+    const target = Number(counter.getAttribute("data-target"));
+    const duration = 2500;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+
+        const elapsed = currentTime - startTime;
+
+        // Constant speed from 0 to target
+        const progress = Math.min(elapsed / duration, 1);
+
+        const currentValue = Math.floor(target * progress);
+
+        // Add % symbol only for percentage counter
+        if (counter.dataset.suffix === "%") {
+            counter.textContent = currentValue + "%";
+        } else {
+            counter.textContent = currentValue;
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            // Make absolutely sure final value is correct
+            if (counter.dataset.suffix === "%") {
+                counter.textContent = target + "%";
+            } else {
+                counter.textContent = target;
+            }
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+});
+
+
     //const sections = document.querySelectorAll("section");
     const sections = document.querySelectorAll("section:not(.gallery-section)");
 

@@ -15,32 +15,66 @@
 <body>
 
     <!-- ================= HEADER ================= -->
-    <header class="site-header">
+    <!-- ================= HEADER ================= -->
+<header class="site-header">
 
-        <div class="logo-area">
-            <img src="assets/images/logo.png"
-                 alt="Srija Green Galaxy Logo"
-                 class="logo">
+    <div class="logo-area">
+        <img src="assets/images/logo.png"
+             alt="Srija Green Galaxy Logo"
+             class="logo">
 
-            <div class="brand-name">
-                <h1>SRIJA GREEN GALAXY</h1>
-                <p>Turning Agricultural Waste into a Greener Tomorrow</p>
-            </div>
+        <div class="brand-name">
+            <h1>SRIJA GREEN GALAXY</h1>
+            <p>Turning Agricultural Waste into a Greener Tomorrow</p>
         </div>
+    </div>
 
-        <nav class="navbar">
-            <a href="index.html" class="active">Home</a>
-            <a href="team.html">Team</a>
-            <a href="about.html">About</a>
-            <a href="products.html">Products</a>
-            <a href="impact.html">Our Impact</a>
-            <a href="certificates.html">Certificates</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-            <a href="buy-now.html" >Buy Now</a>
-        </nav>
 
-    </header>
+    <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="team.html">Team</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="impact.html">Our Impact</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="buy-now.html">Buy Now</a>
+    </nav>
+
+
+    <!-- ================= HEADER ACTIONS ================= -->
+
+    <div class="header-actions">
+
+        <!-- Wishlist -->
+        <button class="header-icon-btn"
+                id="wishlistBtn"
+                aria-label="Wishlist"
+                title="Wishlist">
+
+            <span class="header-icon">♡</span>
+
+            <span class="icon-count" id="wishlistCount">0</span>
+
+        </button>
+
+
+        <!-- Cart -->
+        <button class="header-icon-btn"
+                id="cartBtn"
+                aria-label="Shopping Cart"
+                title="Shopping Cart">
+
+            <span class="header-icon">🛒</span>
+
+            <span class="icon-count" id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</header>
 
 
     <!-- ================= HERO SECTION ================= -->
@@ -48,46 +82,75 @@
 
         <section class="hero">
 
-            <div class="hero-content">
+    <div class="hero-content">
 
-                <p class="small-heading">WELCOME TO</p>
+        <p class="small-heading">WELCOME TO</p>
 
-                <h2>
-                    SRIJA GREEN GALAXY Pvt Ltd
-                </h2>
+        <h2>
+            SRIJA GREEN GALAXY Pvt Ltd
+        </h2>
 
-                <h3>
-                    Turning Agricultural Waste into a Greener Tomorrow
-                </h3>
+        <h3>
+            Turning Agricultural Waste into a Greener Tomorrow
+        </h3>
 
-                <p>
-                    We transform agricultural waste into innovative,
-                    eco-friendly products that protect nature and create
-                    sustainable opportunities for communities.
-                </p>
+        <p>
+            We transform agricultural waste into innovative,
+            eco-friendly products that protect nature and create
+            sustainable opportunities for communities.
+        </p>
 
-                <div class="hero-buttons">
-                    <a href="about.html" class="btn primary-btn">
-                        Discover Our Journey
-                    </a>
+        <div class="hero-buttons">
 
-                    <a href="products.html" class="btn secondary-btn">
-                        Explore Products
-                    </a>
-                </div>
+            <a href="products.html" class="btn primary-btn">
+                Explore Products
+            </a>
 
-            </div>
+            <a href="contact.html" class="btn secondary-btn">
+                Become a Distributor
+            </a>
 
-            <div class="hero-image">
+        </div>
 
-    <video autoplay muted loop playsinline controls>
-        <source src="assets/video/journy.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+
+        <!-- ================= HERO TRUST METRICS ================= -->
+
+        <div class="hero-metrics">
+
+    <div class="hero-metric">
+        <strong class="count-number" data-target="45">0</strong>
+        <span>Days</span>
+        <small>Fully Decomposes</small>
+    </div>
+
+    <div class="hero-metric">
+        <strong class="count-number" data-target="100" data-suffix="%">0%</strong>
+        <span>Plant-Based</span>
+        <small>Materials</small>
+    </div>
+
+    <div class="hero-metric">
+        <strong>0 PPM</strong>
+        <span>Non-Toxic</span>
+        <small>Chemicals</small>
+    </div>
 
 </div>
 
-        </section>
+    </div>
+
+
+    <div class="hero-image">
+
+        <video autoplay muted loop playsinline controls>
+            <source src="assets/video/journy.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    </div>
+
+    </section>
+
 
 
         <!-- ================= QUOTE ================= -->
@@ -454,13 +517,15 @@
             <div class="impact-center-circle">
 
                 <img src="assets/images/products/biopot-1.png"
-                     alt="Groundnut shell Biopot">
-
-            </div>
-
-            <h3>Waste → Biopot → Green Future</h3>
+                alt="Groundnut shell Biopot">
 
         </div>
+
+        <a href="impact.html" class="impact-page-button">
+         Explore Our Impact
+        </a>
+
+</div>
 
 
         <!-- LEFT BOTTOM -->
@@ -503,31 +568,7 @@
     </div>
 
 </section>
- <!-- =================================================
-     OUR IMPACT PREVIEW
-================================================= -->
-
-<section class="home-impact-preview">
-
-    <div class="home-impact-content">
-
-        <p class="eyebrow">OUR IMPACT</p>
-
-        <h2>Creating Impact Through Sustainable Innovation</h2>
-
-        <p>
-            From reducing single-use plastic to giving agricultural waste
-            a new purpose, Srija Green Galaxy is working towards a greener
-            and more sustainable future.
-        </p>
-
-        <a href="impact.html" class="impact-more-btn">
-            Explore Our Impact
-        </a>
-
-    </div>
-
-</section>
+ 
 
 
         <!-- ================= RECOGNITION ================= -->
@@ -679,7 +720,102 @@
         </div>
 
     </footer>
+    <!-- ================= CART SIDEBAR ================= -->
 
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="side-cart" id="sideCart">
+
+    <div class="side-cart-header">
+        <h2>Shopping Cart</h2>
+
+        <button class="sidebar-close"
+                id="closeCart"
+                aria-label="Close cart">
+            ×
+        </button>
+    </div>
+
+
+    <div class="side-cart-content" id="cartContent">
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">
+                🛒
+            </div>
+
+            <h3>Your cart is empty</h3>
+
+            <p>
+                Add sustainable products to your cart
+                to see them here.
+            </p>
+
+            <a href="products.html" class="cart-shop-btn">
+                Explore Products
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="side-cart-footer">
+
+        <div class="cart-total-row">
+            <span>Total</span>
+            <strong id="sidebarCartTotal">₹0</strong>
+        </div>
+
+        <a href="buy-now.html" class="cart-checkout-btn">
+            Proceed to Buy
+        </a>
+
+    </div>
+
+</aside>
+<!-- ================= WISHLIST SIDEBAR ================= -->
+
+<aside class="side-wishlist" id="sideWishlist">
+
+    <div class="side-wishlist-header">
+
+        <h2>Wishlist</h2>
+
+        <button class="sidebar-close"
+                id="closeWishlist"
+                aria-label="Close wishlist">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="side-wishlist-content" id="wishlistContent">
+
+        <div class="empty-wishlist">
+
+            <div class="empty-wishlist-icon">
+                ♡
+            </div>
+
+            <h3>Your wishlist is empty</h3>
+
+            <p>
+                Save your favourite sustainable products
+                here for later.
+            </p>
+
+            <a href="products.html" class="wishlist-shop-btn">
+                Explore Products
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
 
     <script src="assets/js/script.js"></script>
 
