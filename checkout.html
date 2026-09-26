@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Srija Green Galaxy</title>
+
+    <link rel="stylesheet"
+          href="assets/css/styles.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="logo-area">
+
+        <img src="assets/images/logo.png"
+             alt="Srija Green Galaxy Logo">
+
+        <span>SRIJA GREEN GALAXY</span>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="products.html"
+           class="active">
+            Products
+        </a>
+
+        <a href="impact.html">
+            Our Impact
+        </a>
+
+        <a href="certificates.html">
+            Certificates
+        </a>
+
+        <a href="gallery.html">
+            Gallery
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+     <!-- ================= HEADER ACTIONS ================= -->
+
+    <div class="header-actions">
+
+        <!-- Wishlist -->
+        <button class="header-icon-btn"
+                id="wishlistBtn"
+                aria-label="Wishlist"
+                title="Wishlist">
+
+            <span class="header-icon">♡</span>
+
+            <span class="icon-count" id="wishlistCount">0</span>
+
+        </button>
+
+
+        <!-- Cart -->
+        <button class="header-icon-btn"
+                id="cartBtn"
+                aria-label="Shopping Cart"
+                title="Shopping Cart">
+
+            <span class="header-icon">🛒</span>
+
+            <span class="icon-count" id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= CHECKOUT HERO ================= -->
+
+<section class="page-hero checkout-hero">
+
+    <div class="page-hero-content">
+
+        <p class="eyebrow">
+            CHECKOUT
+        </p>
+
+        <h1>
+            Complete Your Order
+        </h1>
+
+        <p>
+            Provide your details and we will contact you
+            to confirm your order and delivery.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<main class="checkout-section">
+
+    <div class="checkout-grid">
+
+
+        <!-- ================= CUSTOMER DETAILS ================= -->
+
+        <section class="checkout-card">
+
+            <div class="checkout-card-heading">
+
+                <p class="eyebrow">
+                    CUSTOMER DETAILS
+                </p>
+
+                <h2>
+                    Delivery Information
+                </h2>
+
+            </div>
+
+
+            <form id="checkoutForm">
+
+
+                <div class="checkout-form-group">
+
+                    <label for="customerName">
+                        Full Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required>
+
+                </div>
+
+
+                <div class="checkout-form-row">
+
+                    <div class="checkout-form-group">
+
+                        <label for="customerPhone">
+                            Phone Number *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            required>
+
+                    </div>
+
+
+                    <div class="checkout-form-group">
+
+                        <label for="customerEmail">
+                            Email *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            name="email"
+                            placeholder="Enter email address"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="checkout-form-group">
+
+                    <label for="customerAddress">
+                        Delivery Address *
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        name="address"
+                        rows="5"
+                        placeholder="House / Flat, Street, Village / City, District, State, PIN"
+                        required></textarea>
+
+                </div>
+
+
+                <div class="checkout-form-group">
+
+                    <label for="deliveryArea">
+                        Delivery Area *
+                    </label>
+
+                    <select
+                        id="deliveryArea"
+                        name="delivery_area"
+                        required>
+
+                        <option value="">
+                            Select delivery area
+                        </option>
+
+                        <option value="Within 50 km of Gadwal">
+                            Within 50 km of Gadwal
+                        </option>
+
+                        <option value="Outside 50 km of Gadwal">
+                            Outside 50 km of Gadwal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="checkout-form-group">
+
+                    <label for="customerMessage">
+                        Additional Message
+                    </label>
+
+                    <textarea
+                        id="customerMessage"
+                        name="message"
+                        rows="3"
+                        placeholder="Any special instructions?"></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="checkout-place-order-btn">
+
+                    Place Order
+
+                </button>
+
+
+            </form>
+            <!-- ================= ORDER SUCCESS POPUP ================= -->
+
+<div class="order-success-overlay" id="orderSuccessPopup">
+
+    <div class="order-success-popup">
+
+        <button
+            class="order-success-close"
+            id="closeOrderPopup"
+            aria-label="Close">
+            ×
+        </button>
+
+        <div class="order-success-icon">
+            ✓
+        </div>
+
+        <div class="order-success-content">
+
+            <span class="order-success-label">
+                ORDER CONFIRMED
+            </span>
+
+            <h2>
+                Thank You for Your Order!
+            </h2>
+
+            <p>
+                Your order has been received successfully.
+            </p>
+
+            <p>
+                Our team will contact you shortly to confirm
+                your order and delivery details.
+            </p>
+
+        </div>
+
+        <div class="order-success-actions">
+
+            <a href="products.html"
+               class="order-popup-btn secondary">
+                Continue Shopping
+            </a>
+
+            <a href="index.html"
+               class="order-popup-btn primary">
+                Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+
+        <!-- ================= ORDER SUMMARY ================= -->
+
+        <section class="checkout-card order-summary-card">
+
+            <div class="checkout-card-heading">
+
+                <p class="eyebrow">
+                    YOUR ORDER
+                </p>
+
+                <h2>
+                    Order Summary
+                </h2>
+
+            </div>
+
+
+            <div
+                id="checkoutOrderItems"
+                class="checkout-order-items">
+
+                <!-- Products will appear here -->
+
+            </div>
+
+
+            <div class="checkout-summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="checkoutTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <a href="products.html"
+               class="continue-shopping-btn">
+
+                ← Continue Shopping
+
+            </a>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+
+
+        <!-- ================= FINAL CTA ================= -->
+        <section class="final-cta">
+
+            <div>
+
+                <h2>
+                    Let's Grow a Greener Future Together
+                </h2>
+
+                <p>
+                    Join us in transforming agricultural waste into
+                    sustainable possibilities.
+                </p>
+
+                <a href="contact.html" class="btn primary-btn">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </section>
+
+       
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <img src="assets/images/logo.png"
+                     alt="Srija Green Galaxy"
+                     class="footer-logo">
+
+                <h3>SRIJA GREEN GALAXY</h3>
+
+                <p>
+                    Turning Agricultural Waste into a Greener Tomorrow.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="impact.html">Our Impact</a>
+                <a href="certificates.html">Certificates</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+
+            <div>
+
+                <h3>Contact</h3>
+
+                <p>📍 Gadwal, Telangana, India</p>
+
+                <p>
+                    📧 auguss0506@gmail.com
+                </p>
+
+                <p>
+                    📞 +91-9440981551
+                </p>
+
+                <p>
+                    📞 +91-7013906160
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Srija Green Galaxy Pvt. Ltd.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+    <!-- ================= CART SIDEBAR ================= -->
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="side-cart" id="sideCart">
+
+    <div class="side-cart-header">
+        <h2>Shopping Cart</h2>
+
+        <button class="sidebar-close"
+                id="closeCart"
+                aria-label="Close cart">
+            ×
+        </button>
+    </div>
+
+
+    <div class="side-cart-content" id="cartContent">
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">
+                🛒
+            </div>
+
+            <h3>Your cart is empty</h3>
+
+            <p>
+                Add sustainable products to your cart
+                to see them here.
+            </p>
+
+            <a href="products.html" class="cart-shop-btn">
+                Explore Products
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="side-cart-footer">
+
+        <div class="cart-total-row">
+            <span>Total</span>
+            <strong id="sidebarCartTotal">₹0</strong>
+        </div>
+
+        <a href="checkout.html" class="cart-checkout-btn">
+            Proceed to Buy
+        </a>
+
+    </div>
+
+</aside>
+<!-- ================= WISHLIST SIDEBAR ================= -->
+
+<aside class="side-wishlist" id="sideWishlist">
+
+    <div class="side-wishlist-header">
+
+        <h2>Wishlist</h2>
+
+        <button class="sidebar-close"
+                id="closeWishlist"
+                aria-label="Close wishlist">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="side-wishlist-content" id="wishlistContent">
+
+        <div class="empty-wishlist">
+
+            <div class="empty-wishlist-icon">
+                ♡
+            </div>
+
+            <h3>Your wishlist is empty</h3>
+
+            <p>
+                Save your favourite sustainable products
+                here for later.
+            </p>
+
+            <a href="products.html" class="wishlist-shop-btn">
+                Explore Products
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<script src="assets/js/script.js"></script>
+
+
+</body>
+
+</html>
