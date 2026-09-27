@@ -2224,3 +2224,555 @@ if (mobileMenuBtn && navbar) {
     });
 
 }
+/* =========================================
+   COMPANY PROFILE — COMING SOON POPUP
+========================================= */
+
+const companyProfileBtn =
+    document.getElementById("companyProfileBtn");
+
+const profileComingSoon =
+    document.getElementById("profileComingSoon");
+
+const profileComingClose =
+    document.getElementById("profileComingClose");
+
+const profileComingButton =
+    document.getElementById("profileComingButton");
+
+
+if (
+    companyProfileBtn &&
+    profileComingSoon &&
+    profileComingClose &&
+    profileComingButton
+) {
+
+    /* OPEN POPUP */
+
+    companyProfileBtn.addEventListener(
+        "click",
+        function () {
+
+            profileComingSoon.classList.add("show");
+
+            document.body.style.overflow = "hidden";
+
+        }
+    );
+
+
+    /* CLOSE — X */
+
+    profileComingClose.addEventListener(
+        "click",
+        function () {
+
+            profileComingSoon.classList.remove("show");
+
+            document.body.style.overflow = "";
+
+        }
+    );
+
+
+    /* CLOSE — BUTTON */
+
+    profileComingButton.addEventListener(
+        "click",
+        function () {
+
+            profileComingSoon.classList.remove("show");
+
+            document.body.style.overflow = "";
+
+        }
+    );
+
+
+    /* CLOSE — CLICK OUTSIDE */
+
+    profileComingSoon.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === profileComingSoon
+            ) {
+
+                profileComingSoon.classList.remove("show");
+
+                document.body.style.overflow = "";
+
+            }
+
+        }
+    );
+
+
+    /* CLOSE — ESC KEY */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                profileComingSoon.classList.contains("show")
+            ) {
+
+                profileComingSoon.classList.remove("show");
+
+                document.body.style.overflow = "";
+
+            }
+
+        }
+    );
+
+}/* =========================================
+   CONTACT FORM — ENQUIRY TYPE
+========================================= */
+
+const enquiryType =
+    document.getElementById("enquiryType");
+
+const quoteFields =
+    document.getElementById("quoteFields");
+
+const quoteProduct =
+    document.getElementById("quoteProduct");
+
+const quantity =
+    document.getElementById("quantity");
+
+const locationField =
+    document.getElementById("location");
+
+
+if (
+    enquiryType &&
+    quoteFields &&
+    quoteProduct &&
+    quantity &&
+    locationField
+) {
+
+    enquiryType.addEventListener(
+        "change",
+        function () {
+
+            const showQuoteFields =
+                enquiryType.value === "Request a Quote" ||
+                enquiryType.value === "Bulk Order";
+
+
+            if (showQuoteFields) {
+
+                quoteFields.style.display = "block";
+
+                quoteProduct.required = true;
+                quantity.required = true;
+                locationField.required = true;
+
+            } else {
+
+                quoteFields.style.display = "none";
+
+                quoteProduct.required = false;
+                quantity.required = false;
+                locationField.required = false;
+
+                quoteProduct.value = "";
+                quantity.value = "";
+                locationField.value = "";
+
+            }
+
+        }
+    );
+
+}
+/* =========================================
+   CONTACT FORM — THANK YOU POPUP
+========================================= */
+
+const contactForm =
+    document.querySelector(".contact-form");
+
+const thankYouPopup =
+    document.getElementById("thankYouPopup");
+
+const thankYouClose =
+    document.getElementById("thankYouClose");
+
+const thankYouButton =
+    document.getElementById("thankYouButton");
+
+
+if (
+    contactForm &&
+    thankYouPopup &&
+    thankYouClose &&
+    thankYouButton
+) {
+
+    contactForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            const submitButton =
+                contactForm.querySelector(
+                    ".send-message-btn"
+                );
+
+            const originalText =
+                submitButton.textContent;
+
+            submitButton.disabled = true;
+            submitButton.textContent = "SENDING...";
+
+
+            try {
+
+                const formData =
+                    new FormData(contactForm);
+
+                const response =
+                    await fetch(
+                        contactForm.action,
+                        {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                Accept: "application/json"
+                            }
+                        }
+                    );
+
+
+                if (response.ok) {
+
+                    contactForm.reset();
+
+                    if (quoteFields) {
+                        quoteFields.style.display = "none";
+                    }
+
+                    thankYouPopup.classList.add("show");
+
+                    document.body.style.overflow = "hidden";
+
+                } else {
+
+                    alert(
+                        "Something went wrong. Please try again."
+                    );
+
+                }
+
+            } catch (error) {
+
+                alert(
+                    "Unable to send your enquiry. Please check your internet connection and try again."
+                );
+
+            }
+
+
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+
+        }
+    );
+
+
+    function closeThankYouPopup() {
+
+        thankYouPopup.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    thankYouClose.addEventListener(
+        "click",
+        closeThankYouPopup
+    );
+
+
+    thankYouButton.addEventListener(
+        "click",
+        closeThankYouPopup
+    );
+
+
+    thankYouPopup.addEventListener(
+        "click",
+        function (event) {
+
+            if (event.target === thankYouPopup) {
+                closeThankYouPopup();
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                thankYouPopup.classList.contains("show")
+            ) {
+                closeThankYouPopup();
+            }
+
+        }
+    );
+
+}/* =========================================
+   GALLERY LIGHTBOX
+========================================= */
+
+const galleryItems =
+    document.querySelectorAll(".gallery-item img");
+
+const galleryLightbox =
+    document.getElementById("galleryLightbox");
+
+const galleryLightboxImage =
+    document.getElementById("galleryLightboxImage");
+
+const galleryLightboxClose =
+    document.getElementById("galleryLightboxClose");
+
+const galleryLightboxPrev =
+    document.getElementById("galleryLightboxPrev");
+
+const galleryLightboxNext =
+    document.getElementById("galleryLightboxNext");
+
+const galleryLightboxCurrent =
+    document.getElementById("galleryLightboxCurrent");
+
+const galleryLightboxTotal =
+    document.getElementById("galleryLightboxTotal");
+
+
+let galleryCurrentIndex = 0;
+
+
+/* =========================================
+   OPEN IMAGE
+========================================= */
+
+function openGalleryLightbox(index) {
+
+    if (!galleryItems.length) return;
+
+    galleryCurrentIndex = index;
+
+    const image =
+        galleryItems[galleryCurrentIndex];
+
+    galleryLightboxImage.src =
+        image.src;
+
+    galleryLightboxImage.alt =
+        image.alt || "Gallery image";
+
+    galleryLightboxCurrent.textContent =
+        galleryCurrentIndex + 1;
+
+    galleryLightboxTotal.textContent =
+        galleryItems.length;
+
+    galleryLightbox.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+function closeGalleryLightbox() {
+
+    galleryLightbox.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+function showNextGalleryImage() {
+
+    galleryCurrentIndex =
+        (galleryCurrentIndex + 1) %
+        galleryItems.length;
+
+    updateGalleryLightboxImage();
+
+}
+
+
+/* =========================================
+   PREVIOUS
+========================================= */
+
+function showPreviousGalleryImage() {
+
+    galleryCurrentIndex =
+        (galleryCurrentIndex - 1 +
+        galleryItems.length) %
+        galleryItems.length;
+
+    updateGalleryLightboxImage();
+
+}
+
+
+/* =========================================
+   UPDATE IMAGE
+========================================= */
+
+function updateGalleryLightboxImage() {
+
+    const image =
+        galleryItems[galleryCurrentIndex];
+
+    galleryLightboxImage.src =
+        image.src;
+
+    galleryLightboxImage.alt =
+        image.alt || "Gallery image";
+
+    galleryLightboxCurrent.textContent =
+        galleryCurrentIndex + 1;
+
+}
+
+
+/* =========================================
+   CLICK GALLERY IMAGE
+========================================= */
+
+galleryItems.forEach(function (image, index) {
+
+    image.addEventListener(
+        "click",
+        function () {
+
+            openGalleryLightbox(index);
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+if (galleryLightboxClose) {
+
+    galleryLightboxClose.addEventListener(
+        "click",
+        closeGalleryLightbox
+    );
+
+}
+
+if (galleryLightboxPrev) {
+
+    galleryLightboxPrev.addEventListener(
+        "click",
+        showPreviousGalleryImage
+    );
+
+}
+
+if (galleryLightboxNext) {
+
+    galleryLightboxNext.addEventListener(
+        "click",
+        showNextGalleryImage
+    );
+
+}
+
+
+/* =========================================
+   CLICK BACKDROP TO CLOSE
+========================================= */
+
+if (galleryLightbox) {
+
+    galleryLightbox.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === galleryLightbox
+            ) {
+
+                closeGalleryLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   KEYBOARD CONTROLS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            !galleryLightbox ||
+            !galleryLightbox.classList.contains("show")
+        ) {
+            return;
+        }
+
+
+        if (event.key === "Escape") {
+
+            closeGalleryLightbox();
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+            showNextGalleryImage();
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            showPreviousGalleryImage();
+
+        }
+
+    }
+);
