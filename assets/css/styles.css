@@ -13720,9 +13720,9 @@ section.products-preview .preview-slide img {
 
     cursor: pointer;
 
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(12px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 
     z-index: 9998;
 
@@ -15346,19 +15346,15 @@ section.products-preview .preview-slide img {
 }/* =========================================
    SUBTLE PAGE TRANSITIONS
 ========================================= */
-
 body {
     animation: pageFadeIn 0.45s ease both;
 }
-
 @keyframes pageFadeIn {
     from {
         opacity: 0;
-        transform: translateY(4px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
